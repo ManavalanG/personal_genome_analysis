@@ -1,0 +1,26 @@
+
+# sample name information.
+sample:
+  # label/name of your choice. Example: your name (no spaces)
+  generic: jbond  
+  # dante kit id
+  dante: "54658435704395840" 
+
+# dante labs WGS file paths
+dante:
+  fastq_path: "dante/data/raw/fastq"
+  bam_path: "dante/data/raw/bam"
+  vcf_path: "dante/data/raw/vcf"
+
+# 23andme raw data file path
+23andme_file: "23andme/data/raw//genome_James_Bond_v5_Full_4235345346464.txt"
+
+
+
+############################################################ 
+#### WARNING: Don't change these unless you are certain ####
+############################################################
+
+# ref genome info
+ref_genome: "data/external/ref_genome/hs37d5.fa"
+ref_genome_url: "ftp://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz"
