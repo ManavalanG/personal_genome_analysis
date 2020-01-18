@@ -1,6 +1,6 @@
 # Compare Dante WGS and 23andme genotyping data
 
-## What it does?
+## What does it do?
 
 * Perform QC analyses on WGS data
   * [fastqc](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
@@ -23,13 +23,12 @@
 ## How to run?
 
 * Clone or download this repository
-  * Clone: `git clone xxx`
-  * Download: just download this re
+  * Clone: `git clone https://github.com/ManavalanG/personal_genome_analysis`
+  * Download: See [how to](https://stackoverflow.com/a/6466993/3998252).
 * cd into repo directory.
   * `cd /path/to/personal_genome_analysis`
-* Set up config file as described below.
+* Set up config file `configs/configs.yaml`.
+  * Rename file `configs/example_configs.yaml` to `configs/configs.yaml`
+  * Edit this file to specify file paths and sample names
 * Run the snakemake pipeline
   * `snakemake -k -p --use-conda`
-
-
-## Set up `configs/configs.yaml`
