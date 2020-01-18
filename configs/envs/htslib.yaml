@@ -1,0 +1,8 @@
+name: htslib
+
+channels:
+  - bioconda
+
+dependencies:
+  - bioconda::htslib=1.9
+

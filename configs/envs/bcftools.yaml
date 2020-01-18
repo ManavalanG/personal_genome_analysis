@@ -1,0 +1,8 @@
+name: bcftools
+
+channels:
+  - bioconda
+
+dependencies:
+  - bioconda::bcftools=1.9
+

@@ -1,0 +1,8 @@
+name: qualimap
+
+channels:
+  - bioconda
+
+dependencies:
+  - bioconda::qualimap=2.2.2a
+

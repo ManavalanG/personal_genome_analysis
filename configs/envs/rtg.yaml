@@ -1,0 +1,8 @@
+name: rtg
+
+channels:
+  - bioconda
+
+dependencies:
+  - bioconda::rtg-tools=3.10.1
+
