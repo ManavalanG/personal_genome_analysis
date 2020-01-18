@@ -1,6 +1,6 @@
 rule fastqc:
     input:
-        lambda wildcards: str(list(Path(fastq_path).glob(f'*{wildcards.sample}*{wildcards.read}*.fastq.gz'))[0])
+        lambda wildcards: str(list(Path(wgs_fastq_path).glob(f'*{wildcards.sample}*{wildcards.read}*.fastq.gz'))[0])
     output:
         html= PROCESSED_DIR / "qc/fastqc/{sample}-{read}.html",
         zip= PROCESSED_DIR / "qc/fastqc/{sample}-{read}.zip"
@@ -12,13 +12,13 @@ rule fastqc:
 
 rule qualimap:
     input:
-        Path(bam_path) / "{sample}.bam"
+        wgs_bam_path / "{sample}.bam"
     output:
         PROCESSED_DIR / "qc/qualimap/{sample}/qualimapReport.html",
     message:
         "Run qualimap QC analysis on bam file. Sample: {wildcards.sample}"
     conda:
-        "configs/envs/qualimap.yaml"
+        "../configs/envs/qualimap.yaml"
     params:
         outdir = lambda wildcards, output: Path(output[0]).parent,
         java_mem_size = "8G"

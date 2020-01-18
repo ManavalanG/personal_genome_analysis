@@ -20,7 +20,7 @@ rule ref_sdk:
     message:
         "Creates RTG Sequence Data File (SDF) for ref genome"
     conda:
-        "configs/envs/rtg.yaml"
+        "../configs/envs/rtg.yaml"
     shell:
         """
         rtg format -o {output} {input}
@@ -35,9 +35,8 @@ rule tabix_index:
     message:
         "Tabix indexing vcf"
     conda:
-        "configs/envs/htslib.yaml"
+        "../configs/envs/htslib.yaml"
     shell:
         """
         tabix -p vcf {input}
         """
-

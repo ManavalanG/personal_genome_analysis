@@ -7,7 +7,7 @@ rule convert2vcf_23andme:
     message:
         "Convert 23andme tsv file to vcf format. Sample: {wildcards.sample}"
     conda:
-        "configs/envs/bcftools.yaml"
+        "../configs/envs/bcftools.yaml"
     params:
         sample_name=sample_generic
     shell:
@@ -23,8 +23,8 @@ rule convert2vcf_23andme:
 
 rule vcfeval_compare:
     input:
-        dante = lambda wildcards: str(Path(config['vcf_path']) / f"{sample_dict[wildcards.sample]}.filtered.snp.vcf.gz"),
-        dante_index = lambda wildcards: str(Path(config['vcf_path']) / f"{sample_dict[wildcards.sample]}.filtered.snp.vcf.gz.tbi"),
+        dante = lambda wildcards: str(wgs_vcf_path / f"{sample_dict[wildcards.sample]}.filtered.snp.vcf.gz"),
+        dante_index = lambda wildcards: str(wgs_vcf_path / f"{sample_dict[wildcards.sample]}.filtered.snp.vcf.gz.tbi"),
         vcf_23andme = PROCESSED_DIR / "23andme/vcf/{sample}.vcf.gz",
         vcf_23andme_index = PROCESSED_DIR / "23andme/vcf/{sample}.vcf.gz.tbi",
         ref = config['ref_genome'] + '.sdf'
@@ -36,7 +36,7 @@ rule vcfeval_compare:
         fp = str(PROCESSED_DIR / "rtg_vcfeval_results/{sample}/{comparison_type}/fp.vcf.gz"),
         done = str(PROCESSED_DIR / "rtg_vcfeval_results/{sample}/{comparison_type}/done"),
     conda:
-        "configs/envs/rtg.yaml"
+        "../configs/envs/rtg.yaml"
     params:
         extra_params = lambda wildcards, output: VCFEVAL_PARAMS_DICT[wildcards.comparison_type],
         outpath = lambda wildcards, output: str(Path(output.weighted).parent)
