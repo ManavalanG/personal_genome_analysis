@@ -33,10 +33,10 @@ Two major goals for this project:
 * cd into repo directory.
   * `cd /path/to/personal_genome_analysis`
 * Set up config file `configs/configs.yaml`.
-  * Rename file `configs/example_configs.yaml` to `configs/configs.yaml`
+  * Rename file [`configs/example_configs.yaml`](configs/example_configs.yaml) to `configs/configs.yaml`
   * Edit this file to specify file paths and sample names
 * Run the snakemake pipeline
   * `snakemake -k -p --use-conda`
 
 
-Note: Feedbacks are welcome!!
+*Note: Feedbacks are welcome!!*
