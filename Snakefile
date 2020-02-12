@@ -42,8 +42,23 @@ wildcard_constraints:
 ################################################
 include: "rules/common.smk"
 include: "rules/qc.smk"
-include: "rules/compare_vcfs.smk"
+if config['23andme_file']:  # include only if provided by user
+    include: "rules/compare_vcfs.smk"
 ################################################
+
+def get_23andme_targets():
+    '''
+    if 23andme file is provided, return targets of interest.
+    '''
+    targets = []
+    if config['23andme_file']:
+        targets.extend(expand(str(PROCESSED_DIR / "23andme/vcf/{sample}.vcf.gz"),
+                                    sample=sample_generic)),
+        targets += expand(str(PROCESSED_DIR / "rtg_vcfeval_results/{sample}/{comparison_type}/done"),
+                                    sample=sample_generic,
+                                    comparison_type=VCFEVAL_PARAMS_DICT.keys())
+
+    return targets
 
 
 rule all:
@@ -52,11 +67,6 @@ rule all:
                     sample=sample_dante, read=READ_TYPES),
         expand(str(PROCESSED_DIR / "qc/qualimap/{sample}/qualimapReport.html"),
                     sample=sample_dante),
-        expand(str(PROCESSED_DIR / "23andme/vcf/{sample}.vcf.gz"),
-                    sample=sample_generic),
-        expand(str(PROCESSED_DIR / "rtg_vcfeval_results/{sample}/{comparison_type}/done"),
-                    sample=sample_generic,
-                    comparison_type=VCFEVAL_PARAMS_DICT.keys())
-
+        get_23andme_targets()
 
 

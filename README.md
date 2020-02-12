@@ -3,15 +3,16 @@
 Two major goals for this project:
 
 * Perform some QC analysis on WGS data from Dante labs.
-* Compare 23andme genotyping data to WGS vcf to ensure they actually match.
+* Optional - Compare 23andme genotyping data to WGS vcf to ensure they actually match.
 
 ## What does it do?
 
 * Perform QC analyses on WGS data
   * [fastqc](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
   * [qualimap](http://qualimap.bioinfo.cipf.es/)
-* Convert 23andme genotype raw data to vcf format
-* Compare Dante WGS vcf to 23andme vcf using [rtg vcfeval](https://cdn.rawgit.com/RealTimeGenomics/rtg-tools/master/installer/resources/tools/RTGOperationsManual/rtg_command_reference.html#vcfeval)
+* Following are performed when `23andme_file` is specified by user in `configs/configs.yaml`.
+  * Convert 23andme genotype raw data to vcf format
+  * Compare calls in Dante WGS vcf to 23andme vcf using [rtg vcfeval](https://cdn.rawgit.com/RealTimeGenomics/rtg-tools/master/installer/resources/tools/RTGOperationsManual/rtg_command_reference.html#vcfeval)
 
 ## Requirements
 

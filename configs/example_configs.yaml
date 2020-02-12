@@ -12,7 +12,7 @@ dante:
   bam_path: "dante/data/raw/bam"
   vcf_path: "dante/data/raw/vcf"
 
-# 23andme raw data file path
+# 23andme raw data file path. This is optional. Leave the field empty if 23andme comparison to Dante is not desired.
 23andme_file: "23andme/data/raw//genome_James_Bond_v5_Full_4235345346464.txt"
 
 
